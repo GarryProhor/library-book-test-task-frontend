@@ -9,8 +9,8 @@ const EditBook = () => {
 
     const [book, setBook] = useState({
         id: null,
-        title: "",
-        author: "",
+        title: null,
+        author: null,
         year: null,
     });
 
@@ -24,7 +24,7 @@ const EditBook = () => {
         loadBook()
     },[])
 
-    const onSubmit = async (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
         await axios.put(`http://localhost:8080/books/${id}`, book);
         navigate("/");
@@ -39,7 +39,6 @@ const EditBook = () => {
     return (
         <div className="container">
             <div className="row">
-                {/*col-md-6 : colums of medium size with 6 span */}
                 <div
                     className={
                         "col-md-6 offset-md-3 border rounded p-4 mt-2 shadow"
@@ -47,9 +46,9 @@ const EditBook = () => {
                 >
                     <h2 className={"text-center m-4"}>Редактирование книги</h2>
 
-                    <form onSubmit={(e) => onSubmit(e)}>
+                    <form onSubmit={(e) => onSubmitHandler(e)}>
                         <div className={"mb-3"}>
-                            <label htmlFor={"Название"} className={"form-label"}>
+                            <label htmlFor={"Title"} className={"form-label"}>
                                 Название
                             </label>
                             <input
@@ -63,7 +62,7 @@ const EditBook = () => {
                         </div>
 
                         <div className={"mb-3"}>
-                            <label htmlFor={"Name"} className={"form-label"}>
+                            <label htmlFor={"Author"} className={"form-label"}>
                                 Автор
                             </label>
                             <input
@@ -77,7 +76,7 @@ const EditBook = () => {
                         </div>
 
                         <div className={"mb-3"}>
-                            <label htmlFor={"Name"} className={"form-label"}>
+                            <label htmlFor={"Year"} className={"form-label"}>
                                 Год издания
                             </label>
                             <input

@@ -19,7 +19,7 @@ const AddBook = () => {
         //проверить компоненты
     };
 
-    const onSubmit = async (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
         await axios.post("http://localhost:8080/books", book);
         navigate("/");
@@ -28,7 +28,6 @@ const AddBook = () => {
     return (
         <div className="container">
             <div className="row">
-                {/*col-md-6 : colums of medium size with 6 span */}
                 <div
                     className={
                         "col-md-6 offset-md-3 border rounded p-4 mt-2 shadow"
@@ -36,7 +35,7 @@ const AddBook = () => {
                 >
                     <h2 className={"text-center m-4"}>Добавить книгу</h2>
 
-                    <form onSubmit={(e) => onSubmit(e)}>
+                    <form onSubmit={(e) => onSubmitHandler(e)}>
                         <div className={"mb-3"}>
                             <label htmlFor={"Title"} className={"form-label"}>
                                 Название книги
